@@ -9,7 +9,7 @@ body {
     width: 100%;
 }
 
-.centered {
+.centered-text {
     text-align: center;
     display: table-cell;
     vertical-align: middle;
@@ -23,18 +23,4 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.container-custom{
-    width: 100%;
-    padding-right: var(--bs-gutter-x, .75rem);
-    padding-left: var(--bs-gutter-x, .75rem);
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 500px;
-}
-
-.login-label {
-    text-align: left !important;
-    display: block !important;
-}
+  }
