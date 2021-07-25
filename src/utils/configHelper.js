@@ -36,41 +36,31 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var apiHelper_1 = require("../utils/apiHelper");
-var configHelper_1 = require("../utils/configHelper");
-var RastCore = /** @class */ (function () {
-    function RastCore() {
-        console.log('RastCore initialization');
-        this.configHelper = new configHelper_1["default"]();
-        this.tokenExists = this.configHelper.config.token !== null ? true : false;
-        this.api = new apiHelper_1["default"](this.tokenExists === true ? this.configHelper.config.token : '');
-        this.currentView = 0;
+var fs = require("fs");
+var ConfigHelper = /** @class */ (function () {
+    function ConfigHelper() {
+        var configFile;
+        if (fs.existsSync('./rast_config.json')) {
+            configFile = fs.readFileSync('./rast_config.json', 'utf8');
+            this.config = JSON.parse(configFile);
+            return;
+        }
+        fs.writeFileSync('./rast_config.json', JSON.stringify({
+            token: null
+        }));
+        configFile = fs.readFileSync('./rast_config.json', 'utf8');
+        this.config = JSON.parse(configFile);
     }
-    RastCore.prototype.processEvent = function (eventName, args) {
+    ConfigHelper.prototype.saveConfig = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, response;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _a = eventName;
-                        switch (_a) {
-                            case "login": return [3 /*break*/, 1];
-                            case "get_users": return [3 /*break*/, 3];
-                        }
-                        return [3 /*break*/, 5];
-                    case 1: return [4 /*yield*/, this.api.apiLogin(args.login, args.password)];
-                    case 2:
-                        response = _b.sent();
-                        this.configHelper.config.token = response;
-                        this.configHelper.saveConfig();
-                        return [2 /*return*/, response !== undefined && response !== '' ? true : false];
-                    case 3: return [4 /*yield*/, this.api.getUsers()];
-                    case 4: return [2 /*return*/, _b.sent()];
-                    case 5: return [2 /*return*/, null];
-                }
+            return __generator(this, function (_a) {
+                fs.writeFileSync('./rast_config.json', JSON.stringify({
+                    token: this.config.token
+                }, null, "\t"));
+                return [2 /*return*/];
             });
         });
     };
-    return RastCore;
+    return ConfigHelper;
 }());
-module.exports.RastCore = RastCore;
+exports["default"] = ConfigHelper;
