@@ -1,0 +1,19 @@
+POST https://discord.com/api/v9/channels/697024481222459442/messages HTTP/1.1
+Host: discord.com
+Connection: keep-alive
+Content-Length: 94
+X-Super-Properties: eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAyIiwib3NfdmVyc2lvbiI6IjEwLjAuMTc3NjMiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InJ1IiwiY2xpZW50X2J1aWxkX251bWJlciI6OTA5MjQsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9
+Authorization: NDM2MjA3NjE5NjE1NjIxMTQx.YPsXpg.m91rwev1PuAsIBTRlp_V-7viYO8
+Accept-Language: ru
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.9002 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Origin: https://discord.com
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://discord.com/channels/@me/697024481222459442
+Accept-Encoding: gzip, deflate, br
+Cookie: __dcfduid=90e554ee87f34175160547211fda26bf
+
+{"content":"у меня питон сломался","nonce":"868215538298388480","tts":false}

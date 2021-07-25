@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
-const path = require('path')
+const { ipcMain } = require('electron');
+const { app, BrowserWindow } = require('electron');
+const { RastCore } = require('./src/core/core')
 
 function createWindow() {
   // Create the browser window.
@@ -44,3 +45,16 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+/*
+  Initializing core 
+*/
+const rastCore = new RastCore();
+
+
+/* Events */
+// this is the event listener that will respond when we will request it in the web page
+ipcMain.on('event', (event, arg) => {
+  console.log('EVENT: ' + arg.name);
+  event.returnValue = rastCore.processEvent(arg.name, arg.args);
+})
