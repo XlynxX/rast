@@ -2,3 +2,40 @@
     list-style-type: none;
     font-size: 6px;
 }
+
+.container-xxl-custom {
+    width: 100%;
+    padding-right: var(--bs-gutter-x, .75rem);
+    padding-left: var(--bs-gutter-x, .75rem);
+}
+
+body {
+    overflow: hidden;
+    /* Hide scrollbars */
+}
+
+nav ul {
+    list-style-type: none;
+    height: 100vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 0;
+}
+
+nav ul::-webkit-scrollbar {
+    display: none;
+}
+
+nav ul li {
+    width: 50px;
+    height: 50px;
+    margin: 5px 0;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+nav ul li img {
+    border-radius: 35%;
+}
