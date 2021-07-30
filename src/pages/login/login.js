@@ -16,7 +16,7 @@ $(() => {
         ipcRenderer.send('event', { name: 'login', args: { login: login, password: password } })
     });
 
-    ipcRenderer.on('event-reply', (event, result) => {
+    ipcRenderer.on('event-reply-login', (event, result) => {
         console.log(result);
         if (result == true) window.location.href = '../main/main.html';
         else { console.log('Cannot login, wrong password or login') };

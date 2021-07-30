@@ -91,4 +91,14 @@ export default class ApiHelper {
             return '';
         }
     }
+
+    async getChannels() {
+        try {
+            const response = await axios.get(`https://discord.com/api/v9/users/@me/channels`, { headers: this.headers })
+            return response.data;
+        } catch (reason) {
+            console.log(colors.FgRed + 'An error has occured while trying to send message\nError: ' + reason.response.data.message + colors.Reset);
+            return '';
+        }
+    }
 }

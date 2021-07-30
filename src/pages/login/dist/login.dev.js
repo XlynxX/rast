@@ -21,7 +21,7 @@ $(function () {
       }
     });
   });
-  ipcRenderer.on('event-reply', function (event, result) {
+  ipcRenderer.on('event-reply-login', function (event, result) {
     console.log(result);
     if (result == true) window.location.href = '../main/main.html';else {
       console.log('Cannot login, wrong password or login');

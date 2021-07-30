@@ -167,6 +167,26 @@ var ApiHelper = /** @class */ (function () {
             });
         });
     };
+    ApiHelper.prototype.getChannels = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var response, reason_5;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, axios_1["default"].get("https://discord.com/api/v9/users/@me/channels", { headers: this.headers })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response.data];
+                    case 2:
+                        reason_5 = _a.sent();
+                        console.log(colors_1.colors.FgRed + 'An error has occured while trying to send message\nError: ' + reason_5.response.data.message + colors_1.colors.Reset);
+                        return [2 /*return*/, ''];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
     return ApiHelper;
 }());
 exports["default"] = ApiHelper;
