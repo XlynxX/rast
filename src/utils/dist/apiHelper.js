@@ -107,13 +107,60 @@ var ApiHelper = /** @class */ (function () {
                         return [4 /*yield*/, axios_1["default"].get('https://discord.com/api/v9/users/@me/affinities/users', { headers: this.headers })];
                     case 1:
                         response = _a.sent();
-                        if (response.status == 200) {
-                            return [2 /*return*/, response.data];
-                        }
-                        return [3 /*break*/, 3];
+                        return [2 /*return*/, response.data];
                     case 2:
                         reason_2 = _a.sent();
-                        console.log(colors_1.colors.FgRed + 'An error has occured while trying to get users\n' + reason_2 + colors_1.colors.Reset);
+                        console.log(colors_1.colors.FgRed + 'An error has occured while trying to get users\nError: ' + reason_2.response.data.message + colors_1.colors.Reset);
+                        return [2 /*return*/, ''];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ApiHelper.prototype.getMessages = function (channelID, limit) {
+        if (channelID === void 0) { channelID = 0; }
+        if (limit === void 0) { limit = 50; }
+        return __awaiter(this, void 0, void 0, function () {
+            var response, reason_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, axios_1["default"].get("https://discord.com/api/v9/channels/" + channelID + "/messages", { params: { limit: limit }, headers: this.headers })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response.data];
+                    case 2:
+                        reason_3 = _a.sent();
+                        console.log(colors_1.colors.FgRed + 'An error has occured while trying to get messages\nError: ' + reason_3.response.data.message + colors_1.colors.Reset);
+                        return [2 /*return*/, ''];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ApiHelper.prototype.sendMessage = function (channelID, content, nonce, tts) {
+        if (channelID === void 0) { channelID = 0; }
+        if (nonce === void 0) { nonce = (Math.random() * 100000000000); }
+        if (tts === void 0) { tts = false; }
+        return __awaiter(this, void 0, void 0, function () {
+            var payload, response, reason_4;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        payload = {
+                            "content": content,
+                            "nonce": nonce.toString(),
+                            "tts": tts
+                        };
+                        return [4 /*yield*/, axios_1["default"].post("https://discord.com/api/v9/channels/" + channelID + "/messages", payload, { headers: this.headers })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response.data];
+                    case 2:
+                        reason_4 = _a.sent();
+                        console.log(colors_1.colors.FgRed + 'An error has occured while trying to send message\nError: ' + reason_4.response.data.message + colors_1.colors.Reset);
                         return [2 /*return*/, ''];
                     case 3: return [2 /*return*/];
                 }

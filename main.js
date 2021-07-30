@@ -9,8 +9,11 @@ function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     autoHideMenuBar: true,
+    useContentSize: true,
     width: 800,
     height: 600,
+    minHeight: 500,
+    minWidth: 860,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -55,5 +58,5 @@ app.on('window-all-closed', function () {
 ipcMain.on('event', async(event, arg) => {
   console.log(colors.FgYellow + "EVENT " + arg.name + colors.Reset);
   const response = await rastCore.processEvent(arg.name, arg.args);
-  event.reply('event-reply', response);
+  event.reply(`event-reply-${arg.name}`, response);
 })

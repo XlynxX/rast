@@ -56,8 +56,10 @@ var RastCore = /** @class */ (function () {
                         switch (_a) {
                             case "login": return [3 /*break*/, 1];
                             case "get_users": return [3 /*break*/, 3];
+                            case "get_messages": return [3 /*break*/, 5];
+                            case "send_message": return [3 /*break*/, 7];
                         }
-                        return [3 /*break*/, 5];
+                        return [3 /*break*/, 9];
                     case 1: return [4 /*yield*/, this.api.apiLogin(args.login, args.password)];
                     case 2:
                         response = _b.sent();
@@ -66,7 +68,11 @@ var RastCore = /** @class */ (function () {
                         return [2 /*return*/, response !== undefined && response !== '' ? true : false];
                     case 3: return [4 /*yield*/, this.api.getUsers()];
                     case 4: return [2 /*return*/, _b.sent()];
-                    case 5: return [2 /*return*/, null];
+                    case 5: return [4 /*yield*/, this.api.getMessages(args.channelID)];
+                    case 6: return [2 /*return*/, _b.sent()];
+                    case 7: return [4 /*yield*/, this.api.sendMessage(args.channelID, args.content)];
+                    case 8: return [2 /*return*/, _b.sent()];
+                    case 9: return [2 /*return*/, null];
                 }
             });
         });

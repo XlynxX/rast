@@ -57,12 +57,37 @@ export default class ApiHelper {
     async getUsers() {
         try {
             const response = await axios.get('https://discord.com/api/v9/users/@me/affinities/users', { headers: this.headers });
-            if (response.status == 200) {
-                return response.data;
-            }
+            return response.data;
         }
         catch (reason) {
-            console.log(colors.FgRed + 'An error has occured while trying to get users\n' + reason + colors.Reset);
+            console.log(colors.FgRed + 'An error has occured while trying to get users\nError: ' + reason.response.data.message + colors.Reset);
+            return '';
+        }
+    }
+
+    async getMessages(channelID = 0, limit = 50) {
+        try {
+            const response = await axios.get(`https://discord.com/api/v9/channels/${channelID}/messages`, { params: { limit: limit }, headers: this.headers })
+            return response.data;
+        }
+        catch (reason) {
+            console.log(colors.FgRed + 'An error has occured while trying to get messages\nError: ' + reason.response.data.message + colors.Reset);
+            return '';
+        }
+    }
+
+    async sendMessage(channelID = 0, content: any, nonce = (Math.random() * 100000000000), tts = false) {
+        try {
+            let payload = {
+                "content": content,
+                "nonce": nonce.toString(),
+                "tts": tts
+            }
+            const response = await axios.post(`https://discord.com/api/v9/channels/${channelID}/messages`, payload, { headers: this.headers })
+            return response.data;
+        }
+        catch (reason) {
+            console.log(colors.FgRed + 'An error has occured while trying to send message\nError: ' + reason.response.data.message + colors.Reset);
             return '';
         }
     }

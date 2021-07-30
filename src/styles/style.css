@@ -46,3 +46,12 @@ body {
     text-align: left !important;
     display: block !important;
 }
+
+.rast-primary {
+    background-color: rgb(25, 25, 25);
+}
+
+.col-sm-1-custom {
+    flex: 0 0 auto;
+    width: 70px;
+}

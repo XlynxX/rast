@@ -28,6 +28,12 @@ class RastCore {
       case "get_users": {
         return await this.api.getUsers();
       }
+      case "get_messages": {
+        return await this.api.getMessages(args.channelID);
+      }
+      case "send_message": {
+        return await this.api.sendMessage(args.channelID, args.content)
+      }
 
       default:
         return null;

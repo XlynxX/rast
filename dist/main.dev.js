@@ -20,8 +20,11 @@ function createWindow() {
   // Create the browser window.
   var mainWindow = new BrowserWindow({
     autoHideMenuBar: true,
+    useContentSize: true,
     width: 800,
     height: 600,
+    minHeight: 500,
+    minWidth: 860,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -67,7 +70,7 @@ ipcMain.on('event', function _callee(event, arg) {
 
         case 3:
           response = _context.sent;
-          event.reply('event-reply', response);
+          event.reply("event-reply-".concat(arg.name), response);
 
         case 5:
         case "end":

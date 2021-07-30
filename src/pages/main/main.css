@@ -16,7 +16,7 @@ body {
 
 nav ul {
     list-style-type: none;
-    height: 100vh;
+    height: 92vh;
     overflow: hidden;
     overflow-y: scroll;
     padding: 0;
@@ -38,4 +38,48 @@ li:hover {
 
 nav ul li img {
     border-radius: 35%;
+}
+
+.chat-container>* {
+    display: block;
+}
+
+#chat-container {
+    list-style-type: none;
+    height: 88vh;
+    overflow-y: scroll;
+    padding: 0;
+}
+
+#chat-container::-webkit-scrollbar {
+    display: none;
+}
+
+.chat-container .chat-message {
+    background-color: rgb(40, 40, 40);
+    min-height: 55px;
+    height: fit-content;
+    font-weight: 100;
+    border-radius: .3rem !important;
+    margin: 0.45rem 0;
+}
+
+.chat-container .chat-message .message-inner {
+    padding: 0px 0px 0px 10px;
+}
+
+.chat-container .chat-message .message-sender {
+    margin: 2px 0px 0px 6px;
+    font-size: 12px;
+    color: #848484;
+}
+
+.input-group-custom {
+    display: flex;
+    margin-top: 14px;
+}
+
+#btn-send {
+    margin-left: 20px;
+    width: 130px;
 }
