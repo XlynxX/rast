@@ -26,6 +26,7 @@ $(() => {
     // get_messages
     ipcRenderer.on('event-reply-get_messages', (event, result) => {
         console.log(result, "MESSAGES");
+        let i = 0;
         result.reverse().forEach(item => {
             if (item.content !== "") {
                 $('#chat-container').append(`
@@ -36,10 +37,12 @@ $(() => {
                 `);
                 $('#' + item.id + '-sender').text(item.author.username);
                 $('#' + item.id + '-message').text(item.content);
+                i++;
                 //console.log(item.content);
             }
 
         });
+        $('#chat-container').animate({scrollTop: 55 * i}, 'slow');
     })
 
     // get_channels
