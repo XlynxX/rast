@@ -19,7 +19,9 @@ function createWindow() {
       contextIsolation: false,
       enableRemoteModule: true,
     },
-  })
+  });
+
+  
 
   // and load the first page of the app.
   if (rastCore.tokenExists) mainWindow.loadFile('src/pages/main/main.html');
@@ -52,10 +54,9 @@ app.on('window-all-closed', function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-
 /* Events */
 // this is the event listener that will respond when we will request it in the web page
-ipcMain.on('event', async(event, arg) => {
+ipcMain.on('event', async (event, arg) => {
   console.log(colors.FgYellow + "EVENT " + arg.name + colors.Reset);
   const response = await rastCore.processEvent(arg.name, arg.args);
   event.reply(`event-reply-${arg.name}`, response);

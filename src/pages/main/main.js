@@ -2,6 +2,7 @@ const { ipcRenderer } = require('electron');
 let cID;
 
 $(() => {
+
     $(document).on('click', '#btn-send', function () {
         ipcRenderer.send('event', { name: 'send_message', args: { channelID: cID, content: $('#send-input').val().toString() } })
     });
@@ -42,7 +43,7 @@ $(() => {
             }
 
         });
-        $('#chat-container').animate({scrollTop: 55 * i}, 'slow');
+        $('#chat-container').animate({ scrollTop: 55 * i }, 'slow');
     })
 
     // get_channels

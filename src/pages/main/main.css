@@ -40,13 +40,9 @@ nav ul li img {
     border-radius: 35%;
 }
 
-.chat-container>* {
-    display: block;
-}
-
 #chat-container {
     list-style-type: none;
-    height: 88vh;
+    height: calc(100% - 80px);
     overflow-y: scroll;
     padding: 0;
 }
