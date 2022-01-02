@@ -1,2 +1,2 @@
 # rast
-Rast - is a free closed-source discord client
+Rast - is a free open source discord client
